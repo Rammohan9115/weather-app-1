@@ -29,12 +29,16 @@ const WeatherWidget: React.FC<{}> = () => {
   const getWeatherData = async (cityName: string) => {
     try {
       const response = await axios.get<WeatherData>(
-        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${cityName}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=b87c63bc758d429c8a4163124240202&q=${cityName}&aqi=no`
       );
       setWeatherData(response.data);
       console.log(response.data);
     } catch (error) {
-      console.log(error);
+      if (axios.isAxiosError(error)) {
+        console.log('AxiosError', error.code, error.response?.status, error.message);
+      } else {
+        console.log('Unexpected Error');
+      }
     }
   };
 
