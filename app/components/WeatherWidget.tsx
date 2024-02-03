@@ -29,7 +29,7 @@ const WeatherWidget: React.FC<{}> = () => {
   const getWeatherData = async (cityName: string) => {
     try {
       const response = await axios.get<WeatherData>(
-        `http://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${cityName}&aqi=no`
+        `https://api.weatherapi.com/v1/current.json?key=${process.env.REACT_APP_WEATHER_API_KEY}&q=${cityName}&aqi=no`
       );
       setWeatherData(response.data);
       console.log(response.data);
